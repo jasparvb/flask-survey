@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Thank you{% endblock %}
+{% block content %}
+    <h1>Thank You!</h1>
+    <p>Thanks for answering all the questions</p>
+    <p>This is what you answered:</p>
+    <ul>
+        {% for i in range(idx) %}
+            <li><strong>Q:</strong> {{questions[i].question}}<br><strong>A:</strong> {{responses[i]}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

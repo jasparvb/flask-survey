@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Question {{question_number + 1}}{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages()%}
+        {% if messages %}
+            <div class="alert alert-danger my-5">
+            {% for msg in messages %}
+                <p>{{ msg }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <h1>Question {{question_number + 1}}</h1>
+    <p>{{question.question}}</p>
+    <form action="/answer" method="POST">
+        {% for choice in question.choices %}
+            <div class="form-group form-check"><input type="radio" name="answer" value="{{choice}}"><label for="{{choice}}">{{choice}}</label></div>
+        {% endfor %}
+        <button type="submit" class="btn btn-warning">Submit Answer</button>
+    </form>
+{% endblock %}
