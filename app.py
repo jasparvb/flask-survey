@@ -52,7 +52,7 @@ def add_answer():
 
 @app.route('/thank-you')
 def survey_end():
-    """Renders thank you page at end of survey and prints answers"""
+    """Renders thank you page at end of survey and passes variables to prints answers"""
     responses = session['responses']
     number_of_questions = len(responses)
     return render_template("end.html", questions=survey.questions, responses=responses, idx=number_of_questions)
